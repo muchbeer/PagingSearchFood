@@ -28,20 +28,15 @@ public void initialFood(final FoodDao foodDao) {
     listAllFood = Transformations.switchMap(filterFoodName, input -> {
 
                if (input == null || input.equals("") || input.equals("%%")) {
-//check if the current value is empty load all data else search
+                //check if the current value is empty load all data else search
                 return new LivePagedListBuilder<>(
                         foodDao.loadAllFood(), config)
                         .build();
-
             } else {
-
                    return new LivePagedListBuilder<>(
                         foodDao.loadAllFoodFromSearch(input),config)
                         .build();
             }
-    });
-
-}
-
-
+        });
+    }
 }

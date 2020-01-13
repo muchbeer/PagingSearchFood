@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
-
 import raum.muchbeer.pagingsearchfood.R;
 import raum.muchbeer.pagingsearchfood.model.Food;
 
@@ -18,9 +17,7 @@ public class FoodAdapter  extends PagedListAdapter<Food, FoodAdapter.FoodViewHol
 
     private static final String LOG_TAG = FoodAdapter.class.getSimpleName();
     private Activity activity;
-    protected FoodAdapter() {
-        super(Food.DIFF_CALLBACK);
-    }
+    protected FoodAdapter() {  super(Food.DIFF_CALLBACK);  }
 
     public FoodAdapter( Activity activity) {
         super(Food.DIFF_CALLBACK);
@@ -34,27 +31,22 @@ public class FoodAdapter  extends PagedListAdapter<Food, FoodAdapter.FoodViewHol
         View view = LayoutInflater.from(parent.getContext()).inflate(
                             R.layout.list_food,
                             parent,
-                            false
-        );
+                            false   );
         return new FoodViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
 
-        if (position <= -1) {
-            return;
-        }
-        Food foodObject = getItem(position);
+        if (position <= -1) {  return; }
 
+        Food foodObject = getItem(position);
         try {
             holder.txtFoodName.setText(foodObject.getFood());
             Log.d(LOG_TAG, "The value of food is: " + foodObject);
         } catch (Exception e) {
-            e.printStackTrace();
-        }
+            e.printStackTrace();  }
     }
-
 
 
     public class FoodViewHolder extends RecyclerView.ViewHolder {
@@ -63,7 +55,6 @@ public class FoodAdapter  extends PagedListAdapter<Food, FoodAdapter.FoodViewHol
 
         public FoodViewHolder(@NonNull View itemView) {
             super(itemView);
-
             txtFoodName = itemView.findViewById(R.id.txtFood);
         }
     }
