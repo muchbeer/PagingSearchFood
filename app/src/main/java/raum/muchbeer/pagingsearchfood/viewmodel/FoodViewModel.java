@@ -1,6 +1,5 @@
 package raum.muchbeer.pagingsearchfood.viewmodel;
 
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -33,9 +32,9 @@ public void initialFood(final FoodDao foodDao) {
                 return new LivePagedListBuilder<>(
                         foodDao.loadAllFood(), config)
                         .build();
-               // Log.d(LOG_TAG, "Food list are : " + foodDao.loadAllFood().toString());
+
             } else {
-                   Log.d(LOG_TAG, "input searched is : " + input);
+
                    return new LivePagedListBuilder<>(
                         foodDao.loadAllFoodFromSearch(input),config)
                         .build();

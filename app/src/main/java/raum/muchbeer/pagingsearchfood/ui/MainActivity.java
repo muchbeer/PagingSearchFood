@@ -41,27 +41,18 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel.initialFood(FoodDatabase.getINSTANCE(this).foodDao());
 
-getFoodList();
-
+        getFoodList();
 
         recyclerView.setHasFixedSize(true);
-
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
-
-        // adding inbuilt divider line
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-
-        // adding custom divider line with padding 16dp
-        // recyclerView.addItemDecoration(new MyDividerItemDecoration(this, LinearLayoutManager.VERTICAL, 16));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
 
         recyclerView.setAdapter(adapter);
 
-//        adapter.notifyDataSetChanged();
-//first time set an empty value to get all data
+
+        //first time set an empty value to get all data
         viewModel.filterFoodName.setValue("");
 
         searchFood.addTextChangedListener(new TextWatcher() {
@@ -91,9 +82,9 @@ getFoodList();
             try {
                 Log.d(LOG_TAG, "list of all page number " + foodlistPaging.size());
                 Log.d(LOG_TAG, "list of food are " + foodlistPaging);
-                //refresh current list
+
                 foodsactivity = foodlistPaging;
-             //   showOnRecyclerView();
+
                 adapter.submitList(foodlistPaging);
 
             } catch (Exception e) {
@@ -103,26 +94,5 @@ getFoodList();
 
     }
 
-    private void showOnRecyclerView() {
-
-   //    movieAdapter = new MovieAdapter(this, moviesMain);
-//paging here below
-
-        adapter.submitList(foodsactivity);
-
-        recyclerView.setHasFixedSize(true);
-
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-           recyclerView.setLayoutManager(mLayoutManager);
-
-        // adding inbuilt divider line
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-
-        // adding custom divider line with padding 16dp
-        // recyclerView.addItemDecoration(new MyDividerItemDecoration(this, LinearLayoutManager.VERTICAL, 16));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
-     //   adapter.notifyDataSetChanged();
-    }
 
     }
