@@ -17,7 +17,6 @@ public class FoodAdapter  extends PagedListAdapter<Food, FoodAdapter.FoodViewHol
 
     private static final String LOG_TAG = FoodAdapter.class.getSimpleName();
     private Activity activity;
-    protected FoodAdapter() {  super(Food.DIFF_CALLBACK);  }
 
     public FoodAdapter( Activity activity) {
         super(Food.DIFF_CALLBACK);
