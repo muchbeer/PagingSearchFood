@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import raum.muchbeer.pagingsearchfood.R;
 import raum.muchbeer.pagingsearchfood.model.Food;
 
