@@ -11,17 +11,19 @@ import androidx.annotation.NonNull;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import raum.muchbeer.pagingsearchfood.R;
+import raum.muchbeer.pagingsearchfood.clicklistener.FoodClickListener;
 import raum.muchbeer.pagingsearchfood.model.Food;
 
 public class FoodAdapter  extends PagedListAdapter<Food, FoodAdapter.FoodViewHolder> {
 
     private static final String LOG_TAG = FoodAdapter.class.getSimpleName();
     private Activity activity;
-    protected FoodAdapter() {  super(Food.DIFF_CALLBACK);  }
+   private FoodClickListener mfoodClickListener;
 
-    public FoodAdapter( Activity activity) {
+    public FoodAdapter( Activity activity, FoodClickListener foodClickListener) {
         super(Food.DIFF_CALLBACK);
         this.activity = activity;
+        this.mfoodClickListener = foodClickListener;
     }
 
     @NonNull
@@ -32,7 +34,7 @@ public class FoodAdapter  extends PagedListAdapter<Food, FoodAdapter.FoodViewHol
                             R.layout.list_food,
                             parent,
                             false   );
-        return new FoodViewHolder(view);
+        return new FoodViewHolder(view, mfoodClickListener);
     }
 
     @Override
@@ -44,6 +46,12 @@ public class FoodAdapter  extends PagedListAdapter<Food, FoodAdapter.FoodViewHol
         try {
             holder.txtFoodName.setText(foodObject.getFood());
             Log.d(LOG_TAG, "The value of food is: " + foodObject);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mfoodClickListener.onFoodClicked(foodObject, view);
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();  }
     }
@@ -52,10 +60,17 @@ public class FoodAdapter  extends PagedListAdapter<Food, FoodAdapter.FoodViewHol
     public class FoodViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtFoodName;
+       FoodClickListener mfoodClicker;
 
-        public FoodViewHolder(@NonNull View itemView) {
+        public FoodViewHolder(@NonNull View itemView, FoodClickListener mfoodClickListener) {
             super(itemView);
+        mfoodClicker = mfoodClickListener;
             txtFoodName = itemView.findViewById(R.id.txtFood);
+
+
         }
+
+
+
     }
 }

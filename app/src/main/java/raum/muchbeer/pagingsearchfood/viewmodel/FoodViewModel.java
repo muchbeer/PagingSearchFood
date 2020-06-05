@@ -16,6 +16,7 @@ public class FoodViewModel extends ViewModel {
     private static final String LOG_TAG = FoodViewModel.class.getSimpleName();
     private FoodDao foodDao;
     public LiveData<PagedList<Food>> listAllFood;
+    private LiveData<PagedList<Food>> listAllFoodsInDb;
     public MutableLiveData<String> filterFoodName = new MutableLiveData<>();
 
 public void initialFood(final FoodDao foodDao) {
@@ -25,17 +26,23 @@ public void initialFood(final FoodDao foodDao) {
             .setPageSize(10)
             .build();
 
-    listAllFood = Transformations.switchMap(filterFoodName, input -> {
+    listAllFood = Transformations.switchMap(new DebouncedLiveData<>(filterFoodName, 400), input -> {
 
                if (input == null || input.equals("") || input.equals("%%")) {
-                //check if the current value is empty load all data else search
-                return new LivePagedListBuilder<>(
-                        foodDao.loadAllFood(), config)
-                        .build();
+
+                   synchronized (this) {
+                       //check data is loaded before or not
+                       if (listAllFoodsInDb == null)
+                           listAllFoodsInDb = new LivePagedListBuilder<>(
+                                   foodDao.loadAllFood(), config)
+                                   .build();
+                   }
+                   return listAllFoodsInDb;
             } else {
+
                    return new LivePagedListBuilder<>(
-                        foodDao.loadAllFoodFromSearch(input),config)
-                        .build();
+                           foodDao.loadAllFoodFromSearch("%" + input + "%"), config)
+                           .build();
             }
         });
     }

@@ -1,0 +1,125 @@
+{
+
+	"foodjson": [
+		{
+		"food": "Samaki Ugali",
+		"food_price": "2500", 
+		"restaurant": "Babu"
+		},
+		{
+		"food": "Pilau supu",
+		"food_price": "1500", 
+		"restaurant": "Msondo"
+		},
+		{
+		"food": "Mlenda Ugali",
+		"food_price": "1300", 
+		"restaurant": "Mtakuja"
+		},
+		{
+		"food": "Wali Maharage",
+		"food_price": "1500", 
+		"restaurant": "Utozi"
+		},
+		{
+		"food": "Viaz vitamu",
+		"food_price": "1800", 
+		"restaurant": "Mtababu"
+		},
+		{
+		"food": "French Fried",
+		"food_price": "3000", 
+		"restaurant": "Stokcer"
+		},
+		{
+		"food": "Chips Chicken",
+		"food_price": "7000", 
+		"restaurant": "KFC"
+		},
+		{
+		"food": "Shuwarma",
+		"food_price": "4300", 
+		"restaurant": "LeFood"
+		},
+		{
+		"food": "Makande",
+		"food_price": "1700", 
+		"restaurant": "Mtoka"
+		},
+		{
+		"food": "Miogo",
+		"food_price": "2500", 
+		"restaurant": "Babu"
+		},
+		{
+		"food": "Futali",
+		"food_price": "900", 
+		"restaurant": "WaNje"
+		},
+		{
+		"food": "Ndizi nyama",
+		"food_price": "2900", 
+		"restaurant": "Container"
+		},
+		{
+		"food": "Ugali Kisamvu",
+		"food_price": "3000", 
+		"restaurant": "Container"
+		},
+		{
+		"food": "Maboga ",
+		"food_price": "1000", 
+		"restaurant": "Msenja"
+		},
+		{
+		"food": "Wali Chinesee",
+		"food_price": "2500", 
+		"restaurant": "Babu"
+		},
+		{
+		"food": "Chicken Wings",
+		"food_price": "8000", 
+		"restaurant": "KFC"
+		},
+		{
+		"food": "Wali SukumaWeek",
+		"food_price": "1000", 
+		"restaurant": "Babu"
+		},
+		{
+		"food": "Samaki Sausage",
+		"food_price": "12500", 
+		"restaurant": "Babu"
+		},
+		{
+		"food": "Utombo Ndizi",
+		"food_price": "4500", 
+		"restaurant": "Msijege"
+		},
+		{
+		"food": "Uji HalfCake",
+		"food_price": "1000", 
+		"restaurant": "Chabarabara"
+		},
+		{
+		"food": "Kitimoto",
+		"food_price": "8900", 
+		"restaurant": "Container"
+		},
+		{
+		"food": "Kitimoto Ndizi",
+		"food_price": "10000", 
+		"restaurant": "Segerea"
+		},
+		{
+		"food": "Supu ya Ng'ombe",
+		"food_price": "1500", 
+		"restaurant": "Babu"
+		},
+		{
+		"food": "Supu ya Mbuzi",
+		"food_price": "4000", 
+		"restaurant": "Babu"
+		}
+		]
+}
