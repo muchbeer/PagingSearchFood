@@ -10,7 +10,7 @@ import raum.muchbeer.pagingsearchfood.R;
 import raum.muchbeer.pagingsearchfood.model.Food;
 
 public class FoodActivity extends AppCompatActivity {
-
+//make
     TextView foodName, foodPrice;
 
     @Override
