@@ -2,22 +2,7 @@ package raum.muchbeer.pagingsearchfood.DB;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
-
-import raum.muchbeer.pagingsearchfood.R;
 import raum.muchbeer.pagingsearchfood.model.Food;
 
 public class InitialFoodData extends AsyncTask<Void, Void, Void> {
@@ -51,61 +36,6 @@ public class InitialFoodData extends AsyncTask<Void, Void, Void> {
         foodDao.insert(new Food("Shuwarma", "7000", "Wallet"));
         foodDao.insert(new Food("Karanga Choroko", "4000", "Mtaijeka"));
         foodDao.insert(new Food("Viazi Vitamu Nyama", "1800", "Yusna"));
-        /*        Food tzFood1=new Food();
-        tzFood1.setFood("Wali");
-
-
-        Food tzFood2=new Food();
-        tzFood2.setFood("Maharage");
-
-
-        Food tzFood3=new Food();
-        tzFood3.setFood("Samaki");
-
-        Food tzFood4=new Food();
-        tzFood4.setFood("Viazi vitamu");
-
-        Food tzFood5=new Food();
-        tzFood4.setFood("Viazi mviringo");
-
-        Food tzFood6=new Food();
-        tzFood6.setFood("Nyama");
-
-        Food tzFood7=new Food();
-        tzFood7.setFood("Miogo");
-
-        Food tzFood8=new Food();
-        tzFood8.setFood("Mtori");
-
-        Food tzFood9=new Food();
-        tzFood9.setFood("Ndizi");
-
-        Food tzFood10=new Food();
-        tzFood10.setFood("Kisamvu");
-
-        Food tzFood11=new Food();
-        tzFood11.setFood("Maboga");
-
-        Food tzFood12=new Food();
-        tzFood12.setFood("Mrenda");
-
-        tzFood12.setFood("Mrenda");
-
-        tzFood12.setFood("Mrenda");
-
-        Food tzFood13=new Food();
-        tzFood13.setFood("Sukuma Week");
-
-        foodDao.insert(tzFood1);
-        foodDao.insert(tzFood2);
-        foodDao.insert(tzFood3);
-        foodDao.insert(tzFood4);
-        foodDao.insert(tzFood5);
-        foodDao.insert(tzFood6);
-        foodDao.insert(tzFood7);
-        foodDao.insert(tzFood8);
-        foodDao.insert(tzFood9);
-        foodDao.insert(tzFood10);*/
 
         return null;
     }

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.FoodActivity"
     android:transitionName="@string/transition_food"
+    android:id="@+id/description"
     >
 
     <TextView

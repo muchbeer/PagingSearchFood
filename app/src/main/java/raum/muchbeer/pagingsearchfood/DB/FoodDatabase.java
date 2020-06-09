@@ -17,7 +17,7 @@ import java.util.concurrent.Executors;
 
 import raum.muchbeer.pagingsearchfood.model.Food;
 
-@Database(entities = {Food.class}, version = 2, exportSchema = false)
+@Database(entities = {Food.class}, version = 3, exportSchema = false)
 public abstract class FoodDatabase extends RoomDatabase {
 
     private static final String LOG_TAG = "FoodDatabase";
@@ -71,7 +71,9 @@ Log.d(LOG_TAG, "eNTER THE FoodDatabase: ");
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            new InitialFoodData(INSTANCE, activity).execute();
+          InitialFoodRxJava initialFoodRxJava =  new InitialFoodRxJava(INSTANCE);
+          initialFoodRxJava.insertRoom();
+          //  new InitialFoodData(INSTANCE, activity).execute();
            // addToCallback(activity);
         }
     };

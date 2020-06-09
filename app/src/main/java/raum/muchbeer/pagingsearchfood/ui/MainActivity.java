@@ -1,6 +1,7 @@
 package raum.muchbeer.pagingsearchfood.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
@@ -16,6 +17,9 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -33,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements FoodClickListener
     private PagedList<Food> foodsactivity;
 
     private RecyclerView recyclerView;
-    EditText searchFood;
+
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     FoodViewModel viewModel;
     private FoodAdapter adapter;
@@ -42,9 +46,6 @@ public class MainActivity extends AppCompatActivity implements FoodClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-       // recyclerView = findViewById(R.id.recycler);
-        searchFood = findViewById(R.id.search_food);
 
         ActivityMainBinding mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         adapter = new FoodAdapter(this, this::onFoodClicked);
@@ -69,24 +70,6 @@ public class MainActivity extends AppCompatActivity implements FoodClickListener
         //first time set an empty value to get all data
         viewModel.filterFoodName.setValue("");
 
-        searchFood.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                //just set the current value to search.
-                viewModel.filterFoodName.
-                        setValue("%" + editable.toString() + "%");
-            }
-        });
     }
 
 
@@ -114,6 +97,13 @@ public class MainActivity extends AppCompatActivity implements FoodClickListener
         Toast.makeText(getApplicationContext(), "The food is: " + foodie.getFood(),
                 Toast.LENGTH_LONG).show();
 
+        //CONTENT TRANSITION
+    /*    Bundle bundle = ActivityOptions
+                .makeSceneTransitionAnimation(this)
+                .toBundle();
+           */
+
+    //sHARED transition
         Bundle bundle = ActivityOptions
                 .makeSceneTransitionAnimation(
                         this,
@@ -144,4 +134,30 @@ public class MainActivity extends AppCompatActivity implements FoodClickListener
       //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }*/
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_search, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.search_items);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //just set the current value to search.
+                viewModel.filterFoodName.
+                        setValue("%" + newText + "%");
+                return false;
+            }
+        });
+        return true;
+    }
 }
