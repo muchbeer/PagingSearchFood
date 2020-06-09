@@ -35,7 +35,7 @@ import raum.muchbeer.pagingsearchfood.viewmodel.FoodViewModel;
 public class MainActivity extends AppCompatActivity implements FoodClickListener {
     public static final String SELECTED_FOOODIE = "foodie";
     private PagedList<Food> foodsactivity;
-
+    SearchView searchView;
     private RecyclerView recyclerView;
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements FoodClickListener
         inflater.inflate(R.menu.menu_search, menu);
 
         MenuItem searchItem = menu.findItem(R.id.search_items);
-        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView = (SearchView) searchItem.getActionView();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -159,5 +159,15 @@ public class MainActivity extends AppCompatActivity implements FoodClickListener
             }
         });
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!searchView.isIconified()) {
+            searchView.onActionViewCollapsed();
+        } else {
+            super.onBackPressed();
+        }
+       // super.onBackPressed();
     }
 }
